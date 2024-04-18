@@ -1,0 +1,13 @@
+version : '3'
+services:
+  mysql:
+    image: mysql
+    container_name: aluraflix-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./test/schemas/create_db.sql:/docker-entrypoint-initdb.d/1.sql"
+      - "./test/schemas/create_tables.sql:/docker-entrypoint-initdb.d/2.sql"
